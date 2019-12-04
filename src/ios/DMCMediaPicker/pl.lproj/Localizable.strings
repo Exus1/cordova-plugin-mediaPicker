@@ -1,0 +1,11 @@
+"Cancel"="Anuluj";
+"Done"="Zakończ";
+"All"="Wszystkie zdjęcia";
+"Video"="Filmy";
+"ok"="OK";
+"maxSelectAlert"="Możesz wybrać tylko %d obrazy";
+"maxSizeAlert"="Możesz wybrać obrazy jedynie do %.02f mb";
+"Unable to access album" = "Nie można otworzyć albumu";
+"Please allow to access your album" = "Pozwól na dostęp do albumu w \"Ustawienia -> Prywatość -> Album\"";
+"Setting" = "Ustawienia";
+"Preview" = "Podgląd";

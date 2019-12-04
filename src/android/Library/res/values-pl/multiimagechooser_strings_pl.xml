@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_name">Wybór multimediów</string>
+    <string name="all_dir_name">Zdjęcia i filmy</string>
+    <string name="all_video">Filmy</string>
+    <string name="all_image">Zdjęcia</string>
+    <string name="select_title">Wybierz zdjęcia i filmy</string>
+    <string name="select_video_title">Wybierz filmy</string>
+    <string name="select_image_title">Wybierz zdjęcia</string>
+    <string name="video_dir_name">Wszystkie filmy</string>
+    <string name="msg_amount_limit">Nie możesz wybrać więcej</string>
+    <string name="msg_size_limit">Maksymalna wielkość pliku to</string>
+    <string name="select_null">proszę wybrać plik</string>
+    <string name="done">Zakończ</string>
+    <string name="count_string"></string>
+    <string name="preview">Podgląd</string>
+    <string name="select">Wybierz</string>
+    <string name="video">film</string>
+    <string name="cant_play_video">Nie można odtworzyć!</string>
+    <string name="READ_EXTERNAL_STORAGE">Wymaga dodatkowych uprawnień</string>
+</resources>
