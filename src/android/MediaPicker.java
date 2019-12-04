@@ -233,24 +233,28 @@ public class MediaPicker extends CordovaPlugin {
 
     public void  compressImage( JSONArray args, CallbackContext callbackContext){
         this.callback=callbackContext;
-        try {
-            JSONObject jsonObject = args.getJSONObject(0);
-            String path = jsonObject.getString("path");
-            int quality=jsonObject.getInt("quality");
-            if(quality<100) {
-                File file = compressImage(path, quality);
-                jsonObject.put("path", file.getPath());
-                jsonObject.put("uri", Uri.fromFile(new File(file.getPath())));
-                jsonObject.put("size", file.length());
-                jsonObject.put("name", file.getName());
-                callbackContext.success(jsonObject);
-            }else{
-                callbackContext.success(jsonObject);
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+                    JSONObject jsonObject = args.getJSONObject(0);
+                    String path = jsonObject.getString("path");
+                    int quality=jsonObject.getInt("quality");
+                    if(quality<100) {
+                        File file = compressImage(path, quality);
+                        jsonObject.put("path", file.getPath());
+                        jsonObject.put("uri", Uri.fromFile(new File(file.getPath())));
+                        jsonObject.put("size", file.length());
+                        jsonObject.put("name", file.getName());
+                        callbackContext.success(jsonObject);
+                    }else{
+                        callbackContext.success(jsonObject);
+                    }
+                } catch (Exception e) {
+                    callbackContext.error("compressImage error"+e);
+                    e.printStackTrace();
+                }
             }
-        } catch (Exception e) {
-            callbackContext.error("compressImage error"+e);
-            e.printStackTrace();
-        }
+        });
     }
 
     public void  getFileInfo( JSONArray args, CallbackContext callbackContext){
@@ -370,16 +374,20 @@ public class MediaPicker extends CordovaPlugin {
     }
 
     public  void fileToBlob(String path, CallbackContext callbackContext) {
-        byte[] data = null;
-        try {
-            BufferedInputStream in = new BufferedInputStream(new FileInputStream(path));
-            data = new byte[in.available()];
-            in.read(data);
-            in.close();
-        } catch (IOException e) {
-            callbackContext.error("fileToBlob "+e);
-            e.printStackTrace();
-        }
-        callbackContext.success(data);
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                byte[] data = null;
+                try {
+                    BufferedInputStream in = new BufferedInputStream(new FileInputStream(path));
+                    data = new byte[in.available()];
+                    in.read(data);
+                    in.close();
+                } catch (IOException e) {
+                    callbackContext.error("fileToBlob "+e);
+                    e.printStackTrace();
+                }
+                callbackContext.success(data);
+            }
+        });
     }
 }

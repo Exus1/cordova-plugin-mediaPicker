@@ -88,8 +88,13 @@
         NSString *fullpath=[NSString stringWithFormat:@"%@/%@%@", dmcPickerPath,[[NSProcessInfo processInfo] globallyUniqueString], filename];
         NSNumber *size=[NSNumber numberWithLong:imageData.length];
 
+        UIImage *result = [UIImage imageWithData:imageData];
+        NSInteger qu = 85;
+        CGFloat q=qu/100.0f;
+        NSData *data =UIImageJPEGRepresentation(result,q);
+
         NSError *error = nil;
-        if (![imageData writeToFile:fullpath options:NSAtomicWrite error:&error]) {
+        if (![data writeToFile:fullpath options:NSAtomicWrite error:&error]) {
             NSLog(@"%@", [error localizedDescription]);
             [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]] callbackId:callbackId];
         } else {
