@@ -125,25 +125,21 @@ public class MediaPicker extends CordovaPlugin {
             try {
                 jsonObject = args.getJSONObject(0);
             } catch (Exception e) {
-                e.printStackTrace();
+                return;
             }
             try {
-                thumbnailQuality = jsonObject.getInt("thumbnailQuality");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                thumbnailW = jsonObject.getInt("thumbnailW");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                thumbnailH = jsonObject.getInt("thumbnailH");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                quality = jsonObject.getInt("quality");
+                if(jsonObject.has("thumbnailQuality")) {
+                    thumbnailQuality = jsonObject.getInt("thumbnailQuality");
+                }
+                if(jsonObject.has("thumbnailW")) {
+                    thumbnailW = jsonObject.getInt("thumbnailW");
+                }
+                if(jsonObject.has("thumbnailH")) {
+                    thumbnailH = jsonObject.getInt("thumbnailH");
+                }
+                if(jsonObject.has("quality")) {
+                    quality = jsonObject.getInt("quality");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
